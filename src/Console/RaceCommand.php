@@ -2,6 +2,7 @@
 
 namespace SavvyTech\Race\Console;
 
+use cli\notify\Dots;
 use cli\progress\Bar;
 use Illuminate\Console\Command;
 use SavvyTech\Race\Calculator\Calculator;
@@ -43,8 +44,19 @@ class RaceCommand extends Command
 		$calculator = new Calculator();
 		$result     = $calculator->handle($P1Choose, $P2Choose, $distance);
 
-		new Bar('Wait For Calculating' , 1000,100);
-		out($result);
+		$total = 30;
+		$bar   = new Dots('Processing', $total, 1);
+
+		for ($i = 0; $i < $total; $i++) {
+			usleep(100000);
+
+			$bar->tick();
+		}
+
+		$bar->finish();
+
+		out("The Winner is: {$result}. With Calculated Speed About: {}");
+		line();
 	}
 
 	public function getPlayerVehicle($num) :string
