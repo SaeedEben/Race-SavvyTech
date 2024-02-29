@@ -1,8 +1,28 @@
 {
-    "require-dev": {
-        "orchestra/testbench": "^8.21"
+    "name": "savvy-tech/race",
+    "description": "task",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SavvyTech\\Race\\": "src/"
+        }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SavvyTech\\Race\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "saeed ebrahimzade",
+            "email": "s.ebrahimzade90@gmail.com"
+        }
+    ],
     "require": {
         "wp-cli/php-cli-tools": "^0.11.22"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.21"
     }
 }
