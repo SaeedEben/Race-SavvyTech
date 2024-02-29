@@ -15,12 +15,20 @@ class RaceCommand extends Command
 
 	protected $description = 'Race Players with selected vehicles';
 
+	private $vehicles;
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->vehicles = new Vehicle();
+	}
+
 	/**
 	 * @throws \Exception
 	 */
 	public function handle()
 	{
-		out_padded("Welcome to the Race competition, Please for select press Enter on your Keyboard");
+		out_padded("Welcome to the Race competition, Please for progress press Enter on your Keyboard");
 		$P1Choose = $this->getPlayerVehicle(1);
 		$P2Choose = $this->getPlayerVehicle(2);
 
@@ -29,18 +37,17 @@ class RaceCommand extends Command
 
 	public function getPlayerVehicle($num) :string
 	{
-		$vehicles = new Vehicle();
 		line();
 		out("Player " . $num . " turn to choose vehicle:");
 		line();
-		return menu($vehicles->getVehicles());
+		return menu($this->vehicles->getVehicles());
 	}
 
 	public function getDistance()
 	{
 		$distance = readline("Enter a distance for race (km): \n");
-		if (!is_numeric($distance) && $distance <= 0) {
-			out("Distance must be numeric");
+		if (!is_numeric($distance) || (int)$distance <= 0) {
+			out("Distance must be numeric and greater than 0!");
 		}
 
 		return $distance;
