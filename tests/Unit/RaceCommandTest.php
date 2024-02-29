@@ -14,6 +14,6 @@ class RaceCommandTest extends TestCase
 	public function race_command_test()
 	{
 		$test = Artisan::call("race:start");
-		dd($test);
+		return $test;
 	}
 }
