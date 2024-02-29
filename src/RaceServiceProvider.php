@@ -14,6 +14,10 @@ class RaceServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		//
+		if ($this->app->runningInConsole()) {
+			$this->commands([
+				RaceCommand::class,
+			]);
+		}
 	}
 }
