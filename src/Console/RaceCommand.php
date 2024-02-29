@@ -2,7 +2,9 @@
 
 namespace SavvyTech\Race\Console;
 
+use cli\progress\Bar;
 use Illuminate\Console\Command;
+use SavvyTech\Race\Calculator\Calculator;
 use SavvyTech\Race\Vehicle\Vehicle;
 use function cli\line;
 use function cli\menu;
@@ -37,6 +39,12 @@ class RaceCommand extends Command
 		out("Player two Choose {$P2Choose}");
 
 		$distance = $this->getDistance();
+
+		$calculator = new Calculator();
+		$result     = $calculator->handle($P1Choose, $P2Choose, $distance);
+
+		new Bar('Wait For Calculating' , 1000,100);
+		out($result);
 	}
 
 	public function getPlayerVehicle($num) :string

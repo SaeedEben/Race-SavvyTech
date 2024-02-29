@@ -1,6 +1,6 @@
 <?php
 
-namespace SavvyTech\Race\Calculator;
+namespace SavvyTech\Race\Calculator\Contract;
 
 interface CalculatorInterface
 {

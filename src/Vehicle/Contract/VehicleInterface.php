@@ -1,6 +1,6 @@
 <?php
 
-namespace SavvyTech\Race\Vehicle;
+namespace SavvyTech\Race\Vehicle\Contract;
 
 interface VehicleInterface
 {

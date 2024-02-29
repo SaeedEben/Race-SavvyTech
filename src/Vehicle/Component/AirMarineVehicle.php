@@ -1,8 +1,11 @@
 <?php
 
-namespace SavvyTech\Race\Vehicle;
+namespace SavvyTech\Race\Vehicle\Component;
 
-class AirMarineVehicle extends Vehicle
+use SavvyTech\Race\Vehicle\Contract\VehicleInterface;
+use SavvyTech\Race\Vehicle\Vehicle;
+
+class AirMarineVehicle extends Vehicle implements VehicleInterface
 {
 	public function distanceCalculator($speed, $distance) :float
 	{

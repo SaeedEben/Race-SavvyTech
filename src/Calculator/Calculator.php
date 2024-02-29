@@ -2,8 +2,9 @@
 
 namespace SavvyTech\Race\Calculator;
 
-use SavvyTech\Race\Vehicle\AirMarineVehicle;
-use SavvyTech\Race\Vehicle\LandVehicle;
+use SavvyTech\Race\Calculator\Contract\CalculatorInterface;
+use SavvyTech\Race\Vehicle\Component\AirMarineVehicle;
+use SavvyTech\Race\Vehicle\Component\LandVehicle;
 use SavvyTech\Race\Vehicle\Vehicle;
 
 class Calculator implements CalculatorInterface
@@ -45,7 +46,7 @@ class Calculator implements CalculatorInterface
 		return $result;
 	}
 
-	private function winnerGenerator($playerOneResult, $playerTwoResult)
+	private function winnerGenerator($playerOneResult, $playerTwoResult) :string
 	{
 		return $playerOneResult > $playerTwoResult ? 'player_one' : 'player_two';
 	}
