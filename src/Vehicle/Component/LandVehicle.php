@@ -4,15 +4,10 @@ namespace SavvyTech\Race\Vehicle;
 
 use SavvyTech\Race\Vehicle\Vehicle;
 
-class LandVehicle extends Vehicle
+class LandVehicle extends Vehicle implements VehicleInterface
 {
-	public function speedConverter($speed)
+	public function distanceCalculator($speed, $distance) :float
 	{
-		// TODO: Implement speedConverter() method.
-	}
-
-	public function distanceCalculator($speed, $distance)
-	{
-		// TODO: Implement distanceCalculator() method.
+		return $distance / $speed;
 	}
 }
