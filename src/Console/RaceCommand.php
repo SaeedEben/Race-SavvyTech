@@ -29,8 +29,12 @@ class RaceCommand extends Command
 	public function handle()
 	{
 		out_padded("Welcome to the Race competition, Please for progress press Enter on your Keyboard");
+
 		$P1Choose = $this->getPlayerVehicle(1);
+		out("Player one Choose {$P1Choose}");
+
 		$P2Choose = $this->getPlayerVehicle(2);
+		out("Player two Choose {$P2Choose}");
 
 		$distance = $this->getDistance();
 	}
@@ -40,11 +44,14 @@ class RaceCommand extends Command
 		line();
 		out("Player " . $num . " turn to choose vehicle:");
 		line();
-		return menu($this->vehicles->getVehicles());
+		$vehicles = $this->vehicles->getVehicles();
+		$chosen   = menu($vehicles);
+		return $vehicles[$chosen];
 	}
 
 	public function getDistance()
 	{
+		line();
 		$distance = readline("Enter a distance for race (km): \n");
 		if (!is_numeric($distance) || (int)$distance <= 0) {
 			out("Distance must be numeric and greater than 0!");
