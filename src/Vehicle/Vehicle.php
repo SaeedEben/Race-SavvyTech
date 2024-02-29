@@ -10,7 +10,7 @@ class Vehicle
 	 *
 	 * @return mixed
 	 */
-	public function readFile()
+	protected function readFile()
 	{
 		$filePath = __DIR__ . '/vehicles.json';
 		$file     = file_get_contents($filePath);
@@ -49,6 +49,28 @@ class Vehicle
 		foreach ($vehicles as $vehicle) {
 			if ($vehicle['name'] === $name) {
 				$result = $vehicle['unit'];
+				break;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * max speed finder for vehicles
+	 *
+	 * @param $name
+	 *
+	 * @return mixed|void
+	 */
+	public function vehicleMaxSpeed($name)
+	{
+		$vehicles = $this->readFile();
+
+		$result = '';
+		foreach ($vehicles as $vehicle) {
+			if ($vehicle['name'] === $name) {
+				$result = $vehicle['maxSpeed'];
 				break;
 			}
 		}
