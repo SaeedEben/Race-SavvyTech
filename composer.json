@@ -1,31 +1,38 @@
 {
-    "version": "1.0.1",
-    "name": "savvy-tech/race",
-    "description": "task",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "saeed ebrahimzade",
-            "email": "s.ebrahimzade90@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "SavvyTech\\Race\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SavvyTech\\Race\\Tests\\": "tests/"
-        }
-    },
-    "require": {
-        "php": "8.3.*",
-        "wp-cli/php-cli-tools": "^0.11.22"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^8.21",
-        "phpunit/phpunit": "^10.5"
+  "version": "1.0.1",
+  "name": "savvy-tech/race",
+  "description": "task",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "saeed ebrahimzade",
+      "email": "s.ebrahimzade90@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SavvyTech\\Race\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SavvyTech\\Race\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "8.3.*",
+    "wp-cli/php-cli-tools": "^0.11.22"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.21",
+    "phpunit/phpunit": "^10.5"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SavvyTech\\Race\\RaceServiceProvider"
+      ]
+    }
+  }
 }
