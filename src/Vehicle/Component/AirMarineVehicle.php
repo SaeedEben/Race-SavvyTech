@@ -9,7 +9,7 @@ class AirMarineVehicle extends Vehicle implements VehicleInterface
 {
 	public function distanceCalculator($speed, $distance) :float
 	{
-		$convertToKMPH = $speed * 1.852;
+		$convertToKMPH = $speed * $this->KtsToKmh;
 
 		return $distance / $convertToKMPH;
 	}

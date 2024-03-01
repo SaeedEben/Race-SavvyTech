@@ -18,19 +18,16 @@ class Calculator implements CalculatorInterface
 
 	public function handle($playerOneVehicle, $playerTwoVehicle, $distance) :array
 	{
-		// Find Player vehicle unit
-		$playerOneUnit = $this->vehicle->vehicleUnitKind($playerOneVehicle);
-		$playerTwoUnit = $this->vehicle->vehicleUnitKind($playerTwoVehicle);
+		// Find Player vehicle unit and max speed
+		[$playerOneUnit, $playerOneMaxSpeed] = $this->vehicle->vehicleDetail($playerOneVehicle);
+		[$playerTwoUnit, $playerTwoMaxSpeed] = $this->vehicle->vehicleDetail($playerTwoVehicle);
 
-		// Find Player vehicle unit
-		$playerOneMaxSpeed = $this->vehicle->vehicleMaxSpeed($playerOneVehicle);
-		$playerTwoMaxSpeed = $this->vehicle->vehicleMaxSpeed($playerTwoVehicle);
 
 		// Calculate covered distance in hour
 		$playerOneResult = $this->coveredDistanceCalculator($playerOneUnit, $playerOneMaxSpeed, $distance);
 		$playerTwoResult = $this->coveredDistanceCalculator($playerTwoUnit, $playerTwoMaxSpeed, $distance);
 
-		return [$this->winnerGenerator($playerOneResult, $playerTwoResult), $playerOneResult , $playerTwoResult];
+		return [$this->winnerGenerator($playerOneResult, $playerTwoResult), $playerOneResult, $playerTwoResult];
 	}
 
 	private function coveredDistanceCalculator($unit, $speed, $distance) :float

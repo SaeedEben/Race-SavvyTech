@@ -4,6 +4,7 @@ namespace SavvyTech\Race\Vehicle;
 
 class Vehicle
 {
+	protected $KtsToKmh = 1.852;
 
 	/**
 	 * read the vehicles.json file
@@ -39,38 +40,17 @@ class Vehicle
 	 *
 	 * @param $name
 	 *
-	 * @return mixed|void
+	 * @return array
 	 */
-	public function vehicleUnitKind($name)
+	public function vehicleDetail($name) :array
 	{
 		$vehicles = $this->readFile();
 
-		$result = '';
+		$result = [];
 		foreach ($vehicles as $vehicle) {
 			if ($vehicle['name'] === $name) {
-				$result = $vehicle['unit'];
-				break;
-			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * max speed finder for vehicles
-	 *
-	 * @param $name
-	 *
-	 * @return mixed|void
-	 */
-	public function vehicleMaxSpeed($name)
-	{
-		$vehicles = $this->readFile();
-
-		$result = '';
-		foreach ($vehicles as $vehicle) {
-			if ($vehicle['name'] === $name) {
-				$result = $vehicle['maxSpeed'];
+				$result[] = $vehicle['unit'];
+				$result[] = $vehicle['maxSpeed'];
 				break;
 			}
 		}
