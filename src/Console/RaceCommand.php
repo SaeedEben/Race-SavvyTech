@@ -17,8 +17,8 @@ class RaceCommand extends Command
 
 	protected $description = 'Race Players with selected vehicles';
 
-	private $vehicles;
-	private $calculator;
+	private Vehicle    $vehicles;
+	private Calculator $calculator;
 
 	public function __construct()
 	{
