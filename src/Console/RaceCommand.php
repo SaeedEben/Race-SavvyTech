@@ -42,11 +42,13 @@ class RaceCommand extends Command
 
 		$distance = $this->getDistance();
 
-		$result = $this->calculator->handle($P1Choose, $P2Choose, $distance);
+		[$result, $P1Result, $P2Result] = $this->calculator->handle($P1Choose, $P2Choose, $distance);
 
 		$this->progressBar();
 
-		out("The Winner is: {$result}. With Calculated Speed About: {}");
+		out("The Winner is: {$result}");
+		line();
+		out("Player One Time(Hour) Result: {$P1Result}, and Player Two Time(Hour) Result: {$P2Result}");
 		line();
 	}
 
@@ -73,7 +75,7 @@ class RaceCommand extends Command
 
 	public function progressBar()
 	{
-		$total = 30;
+		$total = 20;
 		$bar   = new Dots('Processing', $total, 1);
 
 		for ($i = 0; $i < $total; $i++) {

@@ -16,7 +16,7 @@ class Calculator implements CalculatorInterface
 		$this->vehicle = new Vehicle();
 	}
 
-	public function handle($playerOneVehicle, $playerTwoVehicle, $distance) :string
+	public function handle($playerOneVehicle, $playerTwoVehicle, $distance) :array
 	{
 		// Find Player vehicle unit
 		$playerOneUnit = $this->vehicle->vehicleUnitKind($playerOneVehicle);
@@ -30,7 +30,7 @@ class Calculator implements CalculatorInterface
 		$playerOneResult = $this->coveredDistanceCalculator($playerOneUnit, $playerOneMaxSpeed, $distance);
 		$playerTwoResult = $this->coveredDistanceCalculator($playerTwoUnit, $playerTwoMaxSpeed, $distance);
 
-		return $this->winnerGenerator($playerOneResult, $playerTwoResult);
+		return [$this->winnerGenerator($playerOneResult, $playerTwoResult), $playerOneResult , $playerTwoResult];
 	}
 
 	private function coveredDistanceCalculator($unit, $speed, $distance) :float
@@ -48,6 +48,6 @@ class Calculator implements CalculatorInterface
 
 	private function winnerGenerator($playerOneResult, $playerTwoResult) :string
 	{
-		return $playerOneResult > $playerTwoResult ? 'player_one' : 'player_two';
+		return $playerOneResult > $playerTwoResult ? 'player_two' : 'player_one';
 	}
 }
