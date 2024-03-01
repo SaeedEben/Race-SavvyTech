@@ -1,10 +1,15 @@
 {
+    "version": "1.0.1",
     "name": "savvy-tech/race",
-    "version": "1.0.0",
     "description": "task",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "saeed ebrahimzade",
+            "email": "s.ebrahimzade90@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "SavvyTech\\Race\\": "src/"
@@ -15,12 +20,6 @@
             "SavvyTech\\Race\\Tests\\": "tests/"
         }
     },
-    "authors": [
-        {
-            "name": "saeed ebrahimzade",
-            "email": "s.ebrahimzade90@gmail.com"
-        }
-    ],
     "require": {
         "php": "8.3.*",
         "wp-cli/php-cli-tools": "^0.11.22"
