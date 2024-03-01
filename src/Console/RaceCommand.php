@@ -66,8 +66,9 @@ class RaceCommand extends Command
 	{
 		line();
 		$distance = readline("Enter a distance for race (km): \n");
-		if (!is_numeric($distance) || (int)$distance <= 0) {
+		if (!is_numeric($distance) || (int)$distance <= 0 || !$distance) {
 			out("Distance must be numeric and greater than 0!");
+			exit();
 		}
 
 		return $distance;
