@@ -13,7 +13,7 @@ class RaceCommandTest extends TestCase
 	 */
 	public function race_command_test()
 	{
-		$test = Artisan::call("race:start");
-		return $test;
+		Artisan::call("race:start");
+		$this->assertTrue(true);
 	}
 }

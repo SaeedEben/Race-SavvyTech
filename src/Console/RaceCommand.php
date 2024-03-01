@@ -3,7 +3,6 @@
 namespace SavvyTech\Race\Console;
 
 use cli\notify\Dots;
-use cli\progress\Bar;
 use Illuminate\Console\Command;
 use SavvyTech\Race\Calculator\Calculator;
 use SavvyTech\Race\Vehicle\Vehicle;
@@ -19,11 +18,13 @@ class RaceCommand extends Command
 	protected $description = 'Race Players with selected vehicles';
 
 	private $vehicles;
+	private $calculator;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->vehicles = new Vehicle();
+		$this->vehicles   = new Vehicle();
+		$this->calculator = new Calculator();
 	}
 
 	/**
@@ -41,19 +42,9 @@ class RaceCommand extends Command
 
 		$distance = $this->getDistance();
 
-		$calculator = new Calculator();
-		$result     = $calculator->handle($P1Choose, $P2Choose, $distance);
+		$result = $this->calculator->handle($P1Choose, $P2Choose, $distance);
 
-		$total = 30;
-		$bar   = new Dots('Processing', $total, 1);
-
-		for ($i = 0; $i < $total; $i++) {
-			usleep(100000);
-
-			$bar->tick();
-		}
-
-		$bar->finish();
+		$this->progressBar();
 
 		out("The Winner is: {$result}. With Calculated Speed About: {}");
 		line();
@@ -80,4 +71,17 @@ class RaceCommand extends Command
 		return $distance;
 	}
 
+	public function progressBar()
+	{
+		$total = 30;
+		$bar   = new Dots('Processing', $total, 1);
+
+		for ($i = 0; $i < $total; $i++) {
+			usleep(100000);
+
+			$bar->tick();
+		}
+
+		$bar->finish();
+	}
 }
